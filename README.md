@@ -44,6 +44,7 @@ _Last Change: 4.5.2024_
     - [Loading a Backup](#loading-a-backup)
 </details>
 
+<br><br>
 
 ## Getting Started
 Welcome to the c4vxl Cloud API documentation! This API allows you to unlock the full potential of c4vxl Cloud by providing seamless integration and extending the capabilities of our cloud platform to suit your specific needs. Whether you're building applications, automating workflows, or enhancing user experiences, our API empowers you with direct access to the core features of our cloud service.
