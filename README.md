@@ -1,7 +1,7 @@
 # API Documentation
 
 _This Documentation has been written by [c4vxl](https://c4vxl.de/)!_
-_Last Change: 4.5.2024_
+_Last Change: 24.04.2024_
 
 ## Table of contents
 1. [Getting Started](#getting-started)
@@ -71,16 +71,14 @@ In case of an error, the API will send the following variables as well:
 Each API call to c4vxl Cloud needs to include the following parameters:
 
 - `request`: _Specifies the type of request being made._
-- `username`: _Your username for accessing the c4vxl Cloud service._
-- `password`: _Your password for accessing the c4vxl Cloud service._
+- `api_key`: _Your API Token_
 
 Below is a basic layout of how each API call should be structured:
 
 ```javascript
 const formData = new FormData();
 formData.append("request", "{request_type_here}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 // Additional parameters specific to the request type can be appended here
 
 // Make a fetch request to the c4vxl Cloud API endpoint
@@ -108,8 +106,7 @@ Retrieve a list of files in a specified directory.
 ```javascript
 const formData = new FormData();
 formData.append("request", "filesystem_list");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 formData.append("path", "{path_you_want_to_list}");
 
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
@@ -132,8 +129,7 @@ Retrieve a file's content from a specified path.
 ```javascript
 const formData = new FormData();
 formData.append("request", "filesystem_download");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 formData.append("path", "{path_to_file}");
 
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
@@ -157,8 +153,7 @@ Set the content of a specified file.
 ```javascript
 const formData = new FormData();
 formData.append("request", "filesystem_set_file_content");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 formData.append("path", "{path_to_file}");
 
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
@@ -182,8 +177,7 @@ Upload a file to a specified destination.
 ```javascript
 const formData = new FormData();
 formData.append("request", "filesystem_upload");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 formData.append("file", "{your_file}");
 formData.append("dest", "{destination}");
 
@@ -207,8 +201,7 @@ Create a file at a specified path.
 ```javascript
 const formData = new FormData();
 formData.append("request", "filesystem_create_file");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 formData.append("path", "{your_file_path}");
 
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
@@ -231,8 +224,7 @@ Create a Folder at a specified path.
 ```javascript
 const formData = new FormData();
 formData.append("request", "filesystem_create_folder");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 formData.append("path", "{your_folder_path}");
 
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
@@ -255,8 +247,7 @@ This endpoint allows you to delete a file or folder at a specified path.
 ```javascript
 const formData = new FormData();
 formData.append("request", "filesystem_delete");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
 formData.append("path", "{your_path}");
 
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
@@ -280,8 +271,7 @@ This endpoint allows you to compile a file at a specified path.
 const formData = new FormData();
 formData.append("request", "filesystem_compile");
 formData.append("path", "{your_file_path}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -304,8 +294,7 @@ This endpoint allows you to decompile a .zip file at a specified path.
 const formData = new FormData();
 formData.append("request", "filesystem_decompile");
 formData.append("path", "{your_file_path}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -330,8 +319,7 @@ const formData = new FormData();
 formData.append("request", "filesystem_rename");
 formData.append("path", "{your_file_or_folder_path}");
 formData.append("newName", "{new_name_here}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -356,8 +344,7 @@ const formData = new FormData();
 formData.append("request", "filesystem_move");
 formData.append("path", "{your_file_or_folder_path}");
 formData.append("dest", "{your_destination_path}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -383,8 +370,7 @@ This endpoint allows you to retrieve information about an account based on the U
 const formData = new FormData();
 formData.append("request", "account_info");
 formData.append("uuid", "{account_uuid}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -407,8 +393,7 @@ This endpoint allows you to upload a new profile picture.
 const formData = new FormData();
 formData.append("request", "account_upload_profile_picture");
 formData.append("file", {your_file});
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -431,8 +416,7 @@ This endpoint allows you to set a new status for the account.
 const formData = new FormData();
 formData.append("request", "account_set_status");
 formData.append("newStatus", "{new_status_here}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -453,8 +437,7 @@ This endpoint allows you to check if the account is valid.
 ```javascript
 const formData = new FormData();
 formData.append("request", "account_is_valid");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -478,8 +461,7 @@ This endpoint allows you to retrieve a list of available backups.
 ```javascript
 const formData = new FormData();
 formData.append("request", "backups_list");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -500,8 +482,7 @@ This endpoint allows you to create a new backup.
 ```javascript
 const formData = new FormData();
 formData.append("request", "backups_create");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -523,8 +504,7 @@ This endpoint allows you to remove a specific backup by providing its index.
 const formData = new FormData();
 formData.append("request", "backups_remove");
 formData.append("backupId", "{backup_index}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
@@ -547,8 +527,7 @@ This endpoint allows you to load a specific backup by providing its index.
 const formData = new FormData();
 formData.append("request", "backups_load");
 formData.append("backupId", "{backup_index}");
-formData.append("username", "{your_username}");
-formData.append("password", "{your_password}");
+formData.append("api_key", "{your_api_key}");
         
 var response = await fetch("https://cloud.c4vxl.de/cloud/api/", {
     method: "POST",
